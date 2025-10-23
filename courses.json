@@ -1,0 +1,74 @@
+[
+    {
+        "name": "CMA INTER - BUSINESS LAWS & ETHICS AND OM-SM COMBO",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 22000,
+        "new_rate": 12100,
+        "discount_rate": 45,
+        "order": 1,
+        "initial_visibility": "visible" 
+    },
+    {
+        "name": "CS Executive (Both Groups) - All Papers",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 25900,
+        "new_rate": 15540,
+        "discount_rate": 40,
+        "order": 2,
+        "initial_visibility": "visible"
+    },
+    {
+        "name": "CA Inter - Audit (Single Paper)",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 9900,
+        "new_rate": 6930,
+        "discount_rate": 30,
+        "order": 3,
+        "initial_visibility": "visible"
+    },
+    {
+        "name": "CMA Final - IDT (Single Paper)",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 10500,
+        "new_rate": 6825,
+        "discount_rate": 35,
+        "order": 4,
+        "initial_visibility": "visible"
+    },
+    {
+        "name": "CA Final - Financial Reporting",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 18000,
+        "new_rate": 13500,
+        "discount_rate": 25,
+        "order": 5,
+        "initial_visibility": "hidden" 
+    },
+    {
+        "name": "CS Professional - Financial Management",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 12900,
+        "new_rate": 9030,
+        "discount_rate": 30,
+        "order": 6,
+        "initial_visibility": "hidden"
+    },
+    {
+        "name": "CMA Final - Strategic Financial Management",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 11500,
+        "new_rate": 9200,
+        "discount_rate": 20,
+        "order": 7,
+        "initial_visibility": "hidden"
+    },
+    {
+        "name": "CA Inter - Taxation Combo (Direct & Indirect)",
+        "image": "images/Screenshot 2025-10-23 120033.png",
+        "old_rate": 15000,
+        "new_rate": 11250,
+        "discount_rate": 25,
+        "order": 8,
+        "initial_visibility": "hidden"
+    }
+]
