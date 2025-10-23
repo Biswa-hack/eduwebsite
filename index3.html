@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CB Eduzone - Select the best for you</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+
+    <style>
+        /* Logo Styling for the Navbar */
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #007bff; /* Primary Brand Color */
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .logo-text {
+            color: #28a745; /* Secondary Color */
+        }
+        .tagline {
+            display: block;
+            font-size: 0.75em;
+            font-weight: normal;
+            color: #6c757d;
+            margin-top: -5px;
+        }
+
+        /* Basic Footer Styling (adjust as needed in style.css) */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .footer-section {
+            width: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        .footer-section h4 {
+            color: #ffc107;
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .footer-section a:hover {
+            color: #fff;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #495057;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                CB<span class="logo-text">Eduzone</span>
+                <span class="tagline">Select the best for you, because you deserve it.</span>
+            </a>
+            
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section id="hero">
+            <h1>Learn the Skills of Tomorrow with CB Eduzone</h1>
+            <p>Your journey to a better career starts here.</p>
+            <a href="#" class="btn-primary">Explore Courses</a>
+        </section>
+
+        <section id="recommended-courses">
+            <h2>Other Recommended Courses</h2>
+            <div id="course-list">
+                <p>Loading courses...</p>
+            </div>
+        </section>
+
+        </main>
+
+    <footer>
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h4>About CB Eduzone</h4>
+                <p>CB Eduzone is dedicated to providing high-quality educational resources and courses tailored for modern career demands.</p>
+                <p>Tagline: Select the best for you, because you deserve it.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> 
+                    Ghoshpara Ramrajatala, Howrah - 711104
+                </p>
+                <p>
+                    <i class="fas fa-phone"></i> 
+                    Call: <a href="tel:+919073012584">+91 90730 12584</a>, 
+                    <a href="tel:+917003406653">+91 7003406653</a>
+                </p>
+                <p>
+                    <i class="fas fa-envelope"></i> 
+                    Email: <a href="mailto:support@cbeduzone.com">support@cbeduzone.com</a>
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">FAQs</a>
+            </div>
+            
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 CB Eduzone. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="load_courses.js"></script> 
+</body>
+</html>
