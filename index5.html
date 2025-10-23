@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CB Eduzone — CMA FINAL (Clean Modern)</title>
+    <meta name="description" content="CMA FINAL — CB Eduzone (Clean Modern Version)">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Modern Color Palette & Variables */
+        :root {
+            --primary: #5b21b6; /* Deep Violet-700 */
+            --primary-light: #7c3aed; /* Violet-500 */
+            --secondary: #6b7280;
+            --bg: #f3f4f6; /* Light Gray Background */
+            --card: #fff;
+            --text: #1f2937; /* Darker text */
+            --shadow-subtle: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-lift: 0 15px 40px rgba(0,0,0,0.1);
+            --border: #e5e7eb;
+            --whatsapp: #25d366; /* WhatsApp Green */
+            --accent-orange: #f97316; /* For secondary courses */
+            --discount-green: #2ecc71; /* A nice green for discount badges */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* Utility Classes */
+        .flex { display: flex; align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .grid-cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .mx-auto { max-width: 1200px; margin: auto; }
+        .p-6 { padding: 24px; }
+        .text-center { text-align: center; }
+
+        /* Reusable Components */
+        .card { background: var(--card); border-radius: 16px; box-shadow: var(--shadow-subtle); transition: box-shadow 0.3s; border: 1px solid var(--border); overflow: hidden; }
+        .card:hover { box-shadow: var(--shadow-lift); }
+        .muted { color: var(--secondary); font-size: 14px; }
+        h2, h3 { color: var(--text); margin-bottom: 12px; font-weight: 700; }
+
+        /* Button Styles */
+        .btn { padding: 12px 0; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: var(--primary); color: #fff; width: 100%; margin-bottom: 8px; box-shadow: 0 8px 15px rgba(91, 33, 182, 0.4); }
+        .btn-primary:hover { background-color: var(--primary-light); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(91, 33, 182, 0.5); }
+        .btn-outline { background: #fff; border: 1px solid var(--border); color: var(--text); width: 100%; }
+        .btn-outline:hover { background-color: var(--bg); }
+        
+        /* View All Button Styling */
+        .btn-view-all {
+            background: #fff; 
+            border: 2px solid var(--primary-light); 
+            color: var(--primary); 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-view-all:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        /* Header */
+        header { background: #fff; padding: 16px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo { gap: 12px; font-weight: 800; font-size: 24px; color: var(--primary); }
+        .logo span { background: var(--primary); color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 16px; }
+        nav { gap: 24px; }
+        nav a { color: var(--secondary); font-weight: 600; transition: color 0.2s; }
+        nav a:hover { color: var(--primary-light); }
+        nav a.cta { background: var(--primary); color: #fff; padding: 8px 18px; border-radius: 25px; font-weight: 700; }
+
+        /* Hero Section */
+        .hero { 
+            display: flex; gap: 40px; padding: 60px 24px; max-width: 100%; 
+            background: linear-gradient(135deg, var(--primary) 0%, #a78bfa 100%); 
+            color: #fff; align-items: stretch; position: relative;
+        }
+        .hero-inner { display: flex; gap: 40px; align-items: center; max-width: 1200px; margin: auto; width: 100%; }
+        .hero-left { flex: 1; padding: 20px 0; }
+        .hero-left h1 { font-size: 40px; font-weight: 800; margin-bottom: 16px; color: #fff; text-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .hero-left p { color: #e5e7eb; margin-bottom: 30px; font-size: 18px; }
+        .badge { padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); font-weight: 600; font-size: 14px; color: #fff; backdrop-filter: blur(5px); }
+
+        .hero-card { background: var(--card); padding: 28px; border-radius: 16px; box-shadow: var(--shadow-lift); text-align: center; color: var(--text); }
+        .price-current { font-size: 36px; color: var(--primary); font-weight: 800; }
+
+        /* Main Grid */
+        .main-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; max-width: 1200px; margin: 40px auto; padding: 0 24px; }
+        
+        /* Value Proposition Cards */
+        .value-prop h3 { font-size: 24px; margin-bottom: 20px; color: var(--primary); }
+        .value-card { padding: 20px; text-align: center; border-left: 4px solid var(--primary-light); background: #fdfdff; }
+        .value-card .icon { font-size: 30px; margin-bottom: 10px; color: var(--primary); }
+        .value-card h4 { font-weight: 700; font-size: 16px; margin-bottom: 5px; }
+
+        /* Tabs */
+        .tabs { gap: 16px; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 24px; }
+        .tab { cursor: pointer; font-weight: 600; color: var(--secondary); padding-bottom: 6px; transition: color 0.2s; border-bottom: 3px solid transparent; }
+        .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+        
+        /* Sidebar */
+        aside { position: sticky; top: 80px; align-self: flex-start; }
+        
+        /* WhatsApp Floating Icon */
+        .whatsapp-float {
+            position: fixed; bottom: 20px; right: 20px; z-index: 995;
+            background: var(--whatsapp); color: #fff; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 30px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.5);
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+
+        /* Footer */
+        footer { background: #1f2937; padding: 40px 24px; margin-top: 50px; color: #fff; }
+        .footer-grid { border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 24px; }
+        footer .footer-grid div h4 { color: #fff; }
+        footer .footer-grid div ul li { color: #9ca3af; }
+        .copyright { color: #9ca3af; }
+
+        /* Modal */
+        .modal-back { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 2000; justify-content: center; align-items: center;}
+        .modal-back.show { display: flex; }
+        .modal { background: var(--card); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; transform: translateY(-50px); transition: transform 0.3s ease-out; color: var(--text); }
+        .modal-back.show .modal { transform: translateY(0); }
+        .modal input { width: 100%; padding: 10px; margin: 5px 0 15px; border: 1px solid var(--border); border-radius: 8px; }
+        .modal-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+
+        /* Course Card Specific Styles (NEW) */
+        .course-card-v2 {
+            display: flex;
+            flex-direction: column;
+            border-radius: 16px;
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden; 
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .course-card-v2:hover {
+            box-shadow: var(--shadow-lift);
+        }
+
+        .course-card-v2 .card-image {
+            width: 100%;
+        }
+        
+        .course-card-v2 .card-content {
+            padding: 15px 15px 20px; 
+            text-align: left; 
+        }
+
+        .course-card-v2 .card-content h4 {
+            font-size: 18px; 
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .course-card-v2 .price-area {
+            display: flex;
+            align-items: baseline; 
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .course-card-v2 .price-original {
+            font-size: 18px;
+            color: var(--secondary);
+            text-decoration: line-through;
+            font-weight: 500;
+        }
+
+        .course-card-v2 .price-discounted {
+            font-size: 24px;
+            color: var(--primary); 
+            font-weight: 800;
+        }
+
+        .course-card-v2 .discount-badge {
+            background: var(--discount-green);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px; 
+        }
+
+        /* NEW: Class to hide items with smooth transition */
+        /* Use display: none on load, then JS handles the transition */
+        .hidden-course {
+            display: none !important; 
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        /* NEW: Class to show items */
+        .visible-course {
+            display: flex !important;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive adjustments */
+        @media(max-width: 1024px) { 
+            .main-grid { grid-template-columns: 1fr; gap: 20px; } 
+            .hero-inner { flex-direction: column; text-align: center; } 
+            .hero-right { width: 100%; margin-top: 24px; } 
+            .hero-left h1 { font-size: 36px; }
+            .grid-cols-2 { grid-template-columns: 1fr; }
+            aside { position: static; margin-top: 20px; }
+            .whatsapp-float { bottom: 10px; right: 10px; width: 50px; height: 50px; font-size: 25px; }
+        }
+        @media(max-width: 768px) {
+            nav { display: none; }
+            .logo { font-size: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="mx-auto flex justify-between">
+            <div class="logo flex"><span>ME</span> MEPL Classes</div>
+            <nav class="flex">
+                <a href="#">Syllabus</a>
+                <a href="#">Faculty</a>
+                <a href="#">Testimonials</a>
+                <a class="cta" href="#" onclick="openModal(); return false;">Enroll Today</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <h1>Master CMA FINAL: All Groups. All Papers.</h1>
+                <p>The definitive course designed for high-achievers. Unlock world-class lectures, personalized doubt support, and a guaranteed success roadmap.</p>
+                <div class="badges flex">
+                    <div class="badge">🚀 1000+ Ranks</div>
+                    <div class="badge">🔥 2025 Syllabus</div>
+                    <div class="badge">📱 App & Desktop</div>
+                </div>
+            </div>
+            
+            <div class="hero-right">
+                <div class="hero-card">
+                    <div class="price-label">Complete CMA Final (All Groups)</div>
+                    <div class="price-wrap" style="margin: 15px 0;">
+                        <span class="price-original" style="font-size: 18px; color: var(--secondary); text-decoration: line-through; margin-right: 8px;">₹55,000</span>
+                        <span class="price-current">₹38,500</span>
+                    </div>
+                    <div class="muted" style="margin-bottom: 18px; font-weight: 600;">Save ₹16,500 with this exclusive bundle!</div>
+                    <button class="btn btn-primary" onclick="buyNow()">Enroll Now</button>
+                    <button class="btn btn-outline" onclick="openModal()">Request a Call Back</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-grid">
+        <div>
+            <div class="value-prop">
+                <h3>Why Choose MEPL for CB Eduzone?</h3>
+                <div class="grid-cols-2">
+                    <div class="card value-card">
+                        <div class="icon">💻</div>
+                        <h4>Interactive HD Videos</h4>
+                        <p class="muted">Access lectures anytime, anywhere with unlimited views and offline playback.</p>
+                    </div>
+                    <div class="card value-card">
+                        <div class="icon">🎓</div>
+                        <h4>Expert-Led Faculty</h4>
+                        <p class="muted">Learn complex topics from CMA Rank Holders and industry veterans.</p>
+                    </div>
+                    <div class="card value-card">
+                        <div class="icon">💬</div>
+                        <h4>Dedicated Doubt Support</h4>
+                        <p class="muted">Daily live sessions and a dedicated chat group for instant query resolution.</p>
+                    </div>
+                    <div class="card value-card">
+                        <div class="icon">📊</div>
+                        <h4>Performance Analytics</h4>
+                        <p class="muted">Track your progress and identify weak areas with our integrated test series.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-6" style="margin-top:40px">
+                <div class="tabs flex" id="tabs-container">
+                    <div class="tab active" data-tab="overview" onclick="switchTab(event)">Course Overview</div>
+                    <div class="tab" data-tab="syllabus" onclick="switchTab(event)">Paper Details</div>
+                    <div class="tab" data-tab="faculty" onclick="switchTab(event)">Our Mentors</div>
+                    <div class="tab" data-tab="faqs" onclick="switchTab(event)">FAQ & Support</div>
+                </div>
+                <div id="tab-content" style="color:var(--secondary)">
+                    <div id="overview">This CMA Final course covers the full syllabus with detailed video lectures, intensive practice, in-depth analysis, and regular doubt clearing sessions. We focus on conceptual clarity and exam-oriented strategy to ensure you are fully prepared to secure a rank.</div>
+                    
+                    <div id="syllabus" style="display:none">
+                        <h4 style="color:var(--text); margin-top: 10px;">Group IV Papers</h4>
+                        <ul style="list-style-type: square; padding-left: 20px;"><li>Corporate Financial Reporting (CFR)</li><li>Indirect Tax Laws & Practice (IDT)</li></ul>
+                        <h4 style="color:var(--text); margin-top: 10px;">Group III Papers</h4>
+                        <ul style="list-style-type: square; padding-left: 20px;"><li>Strategic Cost Management (SCM)</li><li>Corporate & Economic Laws (CEL)</li></ul>
+                    </div>
+                    
+                    <div id="faculty" style="display:none">
+                        <div class="flex gap-4" style="align-items:center; border: 1px solid var(--border); padding: 15px; border-radius: 12px; margin-top: 10px;">
+                            <img src="https://via.placeholder.com/80x80.png?text=RK" alt="Rajesh Kumar" style="border-radius: 50%; width: 80px; height: 80px; object-fit: cover; border: 3px solid var(--primary-light);">
+                            <div>
+                                <div style="font-weight:700; color:var(--text); font-size: 18px;">Prof. Rajesh Kumar, CMA, CFA</div>
+                                <div class="muted">15+ years experience. Specializes in Financial & Cost Management. Known for his practical, conceptual teaching style.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="faqs" style="display:none">
+                        <p style="margin-top: 10px;">
+                            <strong>Q:</strong> Is the course material updated for the latest syllabus?<br>
+                            <strong>A:</strong> Yes, all material and lectures are meticulously updated for the **2025/latest ICMAI syllabus**.<br>
+                            <br>
+                            <strong>Q:</strong> What is the refund policy?<br>
+                            <strong>A:</strong> We offer a 7-day money-back guarantee if you are not satisfied. Please check our detailed policy in the footer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-6" style="margin-top:40px">
+                <div class="flex justify-between" style="margin-bottom: 20px;">
+                    <h3>Other Recommended Courses</h3>
+                    <button id="toggle-courses-btn" class="btn-view-all" onclick="toggleCourseVisibility()">View All Courses</button>
+                </div>
+
+                <div class="grid-cols-2" id="course-list" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <p style="text-align: center; grid-column: 1 / -1; color: var(--secondary);">Loading courses...</p>
+                </div>
+                </div>
+            </div>
+
+        <aside>
+            <div class="card p-6 text-center">
+                <img src="https://via.placeholder.com/120x120.png?text=Expert+Mentor" alt="Faculty" style="border-radius: 50%; wIidth: 120px; height: 120px; object-fit: cover; margin: 0 auto 15px; border: 4px solid var(--primary);">
+                <h4 style="font-size: 18px; margin-bottom: 5px;">Need Personalized Guidance?</h4>
+                <div class="muted" style="margin-bottom: 15px;">Book a 1-on-1 session with Prof. R.K. to plan your strategy.</div>
+                <button class="btn btn-primary" style="width: 100%; padding: 10px 0;" onclick="openModal()">Schedule a Free Consultation</button>
+            </div>
+            
+            <div style="background: var(--primary); color: #fff; padding: 24px; border-radius: 16px; box-shadow: var(--shadow-lift); margin-top: 20px; text-align: center;">
+                <h4>24/7 Priority Support</h4>
+                <div class="muted" style="color: #e5e7eb; margin-bottom: 15px;">Chat, Call, or Email. We're here to help you succeed.</div>
+                <a href="tel:+916290935202" style="color: #fff; font-weight: 700; margin-top: 10px; display: block;">📞 +91 62909 35202</a>
+                <a href="mailto:d2hclasses@mohitsir.com" style="color: #fff; font-weight: 700; display: block;">📧 d2hclasses@mohitsir.com</a>
+            </div>
+        </aside>
+    </section>
+
+    <a 
+        href="https://wa.me/917003406653?text=Hi%2C%20I%20saw%20the%20CMA%20Final%20course%20page%20and%20would%20like%20to%20know%20more%20about%20the%20latest%20batch%20schedule." 
+        class="whatsapp-float" 
+        target="_blank" 
+        aria-label="Chat with us on WhatsApp"
+    >
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="mx-auto">
+            <div class="grid-cols-2 footer-grid">
+                <div>
+                    <h4 style="font-size: 20px;">MEPL Classes</h4>
+                    <div style="color: #9ca3af;" class="muted">59, Jatindra Mohan Avenue, Shobhabazar, Kolkata-700005</div>
+                    <div style="color: #fff; margin-top:10px; font-size: 16px;">+91 62909 35202</div>
+                </div>
+                <div>
+                    <h4>Quick Links & Policies</h4>
+                    <ul><li>Syllabus Updates</li><li>App Download</li><li>Privacy Policy</li><li>Refund Policy</li></ul>
+                </div>
+            </div>
+            <div class="copyright text-center">© <span id="year"></span> MEPL Classes. Empowering Future Professionals.</div>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal-back" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal">
+            <h3 id="modal-title">Request a Call Back</h3>
+            <form onsubmit="submitLead(event)">
+                <label for="nm" class="muted">Your Name</label>
+                <input id="nm" required placeholder="Full Name" type="text" />
+                <label for="ph" class="muted">Phone Number</label>
+                <input id="ph" required placeholder="Mobile number" type="tel" pattern="[0-9]{10,}" title="Please enter a valid phone number" />
+                <div class="modal-buttons">
+                    <button type="button" onclick="closeModal()" class="btn btn-outline" style="width: 120px;">Cancel</button>
+                    <button class="btn btn-primary" type="submit" style="width: 120px;">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Modal & Buy/Tab Logic (Kept as is) ---
+        const modalElement = document.getElementById('modal');
+        function openModal(){
+            modalElement.classList.add('show');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeModal(){
+            modalElement.classList.remove('show');
+            document.body.style.overflow = ''; 
+        }
+        modalElement.addEventListener('click', (e) => {
+            if (e.target === modalElement) {
+                closeModal();
+            }
+        });
+        function submitLead(e){
+            e.preventDefault();
+            const name = document.getElementById('nm').value;
+            alert('Thanks '+ name +'! We will contact you shortly for your consultation.');
+            closeModal();
+            e.target.reset(); 
+        }
+        function buyNow(){
+            alert('Redirecting to the secure enrollment page...');
+        }
+        function switchTab(ev){
+            const tab = ev.currentTarget.dataset.tab;
+            document.querySelectorAll('#tabs-container .tab').forEach(t=>t.classList.remove('active'));
+            ev.currentTarget.classList.add('active');
+            
+            ['overview', 'syllabus', 'faculty', 'faqs'].forEach(id => {
+                const contentElement = document.getElementById(id);
+                if (contentElement) contentElement.style.display = 'none';
+            });
+            const selectedContent = document.getElementById(tab);
+            if (selectedContent) selectedContent.style.display = 'block';
+        }
+
+        // The toggleCourseVisibility() function is now defined in load_courses.js, 
+        // but an empty definition is included here to prevent errors if the button is clicked 
+        // before the external script fully loads (optional, but safe).
+        function toggleCourseVisibility() {
+            // Logic handled by load_courses.js
+        }
+    </script>
+
+    <script src="load_courses.js"></script>
+</body>
+</html>
